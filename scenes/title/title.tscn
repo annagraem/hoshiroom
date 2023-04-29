@@ -1,16 +1,53 @@
-[gd_scene load_steps=3 format=3 uid="uid://ctq75brsdcald"]
+[gd_scene load_steps=8 format=3 uid="uid://dypo6vq8s74uj"]
 
+[ext_resource type="FontFile" uid="uid://cqks8yp66qy6t" path="res://assets/fonts/Poppins-Regular.ttf" id="1_etmpi"]
+[ext_resource type="Theme" uid="uid://dag08f3hxggnf" path="res://theme.tres" id="1_ev117"]
 [ext_resource type="Script" path="res://scenes/title/title.gd" id="1_hkqfe"]
-[ext_resource type="Texture2D" uid="uid://duj5m0ky1sjh2" path="res://assets/logo/sunflower_carton.png" id="2_bb2e1"]
+[ext_resource type="VideoStream" path="res://assets/title/pexels-luis-quintero-4990236-1920x1080-30fps.ogv" id="2_kqe78"]
+[ext_resource type="Script" path="res://scenes/title/background_player.gd" id="3_heuyh"]
+[ext_resource type="FontFile" uid="uid://ostqmxwl6deh" path="res://assets/fonts/Sniglet-Regular.ttf" id="6_avjbo"]
+
+[sub_resource type="Theme" id="Theme_predi"]
+default_font = ExtResource("1_etmpi")
 
 [node name="Title" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_predi")
 script = ExtResource("1_hkqfe")
+
+[node name="BackgroundColor" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="BackgroundPlayer" type="VideoStreamPlayer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -9.0
+offset_right = -4.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+stream = ExtResource("2_kqe78")
+autoplay = true
+expand = true
+script = ExtResource("3_heuyh")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -28,7 +65,10 @@ grow_vertical = 2
 
 [node name="TitleLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme = ExtResource("1_ev117")
+theme_type_variation = &"HeaderLarge"
+theme_override_fonts/font = ExtResource("6_avjbo")
+theme_override_font_sizes/font_size = 67
 text = "Hoshi's room"
 horizontal_alignment = 1
 
@@ -39,22 +79,6 @@ text = "Start"
 [node name="OptionsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Options"
-
-[node name="StudioImage" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -36.9999
-offset_top = -152.0
-offset_right = 700.0
-offset_bottom = 613.0
-grow_horizontal = 2
-grow_vertical = 0
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_bb2e1")
 
 [node name="StudioLabel" type="Label" parent="."]
 layout_mode = 1
@@ -72,5 +96,6 @@ grow_vertical = 0
 text = "Sunflower Milk"
 horizontal_alignment = 1
 
+[connection signal="finished" from="BackgroundPlayer" to="BackgroundPlayer" method="_on_finished"]
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]

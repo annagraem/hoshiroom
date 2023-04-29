@@ -1,0 +1,25 @@
+~ intro
+
+Hey! Before starting up, I'd like to ask you a few questions.
+Do you like tomatoes?
+- Yeah
+- Only cooked ones
+- I hate them
+What's your favorite color?
+- Blue
+	set Data.hair_color = Data.ColorEnum.BLUE
+- Purple
+	set Data.hair_color = Data.ColorEnum.PURPLE
+- Pink
+	set Data.hair_color = Data.ColorEnum.PINK
+- Red
+	set Data.hair_color = Data.ColorEnum.RED
+- Yellow
+	set Data.hair_color = Data.ColorEnum.YELLOW
+- Green
+	set Data.hair_color = Data.ColorEnum.GREEN
+- Neither of those
+	set Data.hair_color = Data.ColorEnum.WHITE
+Alright, I think I got all my answers. Have fun!
+
+=> END
