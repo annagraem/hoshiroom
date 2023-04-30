@@ -4,7 +4,6 @@
 [ext_resource type="Script" path="res://scenes/room/room.gd" id="1_i5pik"]
 [ext_resource type="PackedScene" uid="uid://ce4a3pygofds" path="res://scenes/hoshi/hoshi.tscn" id="2_ugjb3"]
 [ext_resource type="Texture2D" uid="uid://b8eiro0b3aaxp" path="res://assets/environment/room.png" id="3_jo1wy"]
-[ext_resource type="Script" path="res://scenes/room/camera.gd" id="5_lf0k6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qa3u7"]
 texture = ExtResource("3_jo1wy")
@@ -83,9 +82,9 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_qa3u7")
 
+
 [node name="Room" type="Node2D"]
 y_sort_enabled = true
-texture_filter = 1
 script = ExtResource("1_i5pik")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -118,6 +117,3 @@ layer_2/tile_data = PackedInt32Array(327689, 393216, 1, 196617, 458752, 1, 19661
 z_index = 1
 position = Vector2(118, 160)
 
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
-script = ExtResource("5_lf0k6")
-player = NodePath("../Hoshi")
