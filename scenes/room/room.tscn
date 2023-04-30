@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://copuc7g31u8p5"]
+[gd_scene load_steps=7 format=3 uid="uid://copuc7g31u8p5"]
 
-[ext_resource type="Script" path="res://scenes/room/color_rect.gd" id="1_852a4"]
 [ext_resource type="Script" path="res://scenes/room/room.gd" id="1_i5pik"]
 [ext_resource type="PackedScene" uid="uid://ce4a3pygofds" path="res://scenes/hoshi/hoshi.tscn" id="2_ugjb3"]
 [ext_resource type="Texture2D" uid="uid://b8eiro0b3aaxp" path="res://assets/environment/room.png" id="3_jo1wy"]
+[ext_resource type="PackedScene" uid="uid://dmohtgmy7vm6n" path="res://scenes/camera/camera.tscn" id="4_w6pmk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qa3u7"]
 texture = ExtResource("3_jo1wy")
@@ -82,15 +82,10 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_qa3u7")
 
-
 [node name="Room" type="Node2D"]
 y_sort_enabled = true
+texture_filter = 1
 script = ExtResource("1_i5pik")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("1_852a4")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -113,7 +108,24 @@ layer_2/y_sort_origin = 0
 layer_2/z_index = 1
 layer_2/tile_data = PackedInt32Array(327689, 393216, 1, 196617, 458752, 1, 196614, 327680, 3, 196615, 327680, 3, 262150, 393216, 2, 196612, 393216, 4)
 
+[node name="Camera2D" parent="." instance=ExtResource("4_w6pmk")]
+position = Vector2(118, 160)
+limit_bottom = 291
+position_smoothing_enabled = true
+editor_draw_limits = true
+
+[node name="TopLeft" parent="Camera2D/Limits" index="0"]
+position = Vector2(0, 16)
+
+[node name="BottomRight" parent="Camera2D/Limits" index="1"]
+position = Vector2(384, 280)
+
 [node name="Hoshi" parent="." instance=ExtResource("2_ugjb3")]
 z_index = 1
 position = Vector2(118, 160)
+speed = 75.0
 
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Hoshi"]
+remote_path = NodePath("../../Camera2D")
+
+[editable path="Camera2D"]
