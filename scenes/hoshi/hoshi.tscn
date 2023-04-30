@@ -99,16 +99,17 @@ _data = {
 "walk_up": SubResource("Animation_dbu0i")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ba7ei"]
-radius = 6.0
-height = 20.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8083l"]
+size = Vector2(13, 6)
 
 [node name="Hoshi" type="CharacterBody2D"]
+y_sort_enabled = true
 texture_filter = 1
 script = ExtResource("1_37hw5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_io0uh")
+offset = Vector2(0, -15)
 hframes = 4
 vframes = 4
 
@@ -119,5 +120,5 @@ libraries = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
-position = Vector2(0, 6)
-shape = SubResource("CapsuleShape2D_ba7ei")
+position = Vector2(-0.5, -3)
+shape = SubResource("RectangleShape2D_8083l")

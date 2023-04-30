@@ -4,7 +4,6 @@ extends CharacterBody2D
 @onready var animations = $AnimationPlayer
 
 func update_animations() -> void:
-    
     if velocity.length() == 0:
         if (animations.is_playing()):
             animations.stop()
