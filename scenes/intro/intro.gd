@@ -12,4 +12,4 @@ func _ready():
 func _on_dialogue_ended(resource: DialogueResource):
     print("dialogue ended, chose color ",
         Data.ColorEnum.keys()[Data.hair_color])
-    change_scene.emit("res://scenes/room/room.tscn")
+    change_scene.emit("res://scenes/room/room_container.tscn")
